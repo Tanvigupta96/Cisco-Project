@@ -3,6 +3,8 @@ package com.example.ciscoproject.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,17 +14,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.ciscoproject.R;
+import com.example.ciscoproject.fragments.SchemeCatergoryFragment;
 
 public class SchemesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
+    private SchemeCatergoryFragment schemeCatergoryFragment=new SchemeCatergoryFragment();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schemes);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar =findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -76,12 +87,16 @@ public class SchemesActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.schemes) {
+            getSupportActionBar().setTitle("Schemes Categories");
+            fragmentTransaction.replace(R.id.container, schemeCatergoryFragment);
+
 
         } else if (id == R.id.login) {
-            //  loginemail.setText(login);
             Intent intent = new Intent(SchemesActivity.this, LoginAcitivity.class);
             startActivity(intent);
         } else if (id == R.id.discuss) {
+
+
 
 
         } else if (id == R.id.latest) {
