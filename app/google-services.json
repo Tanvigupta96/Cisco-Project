@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "142470147623",
+    "firebase_url": "https://ciscoproject-6f757.firebaseio.com",
+    "project_id": "ciscoproject-6f757",
+    "storage_bucket": "ciscoproject-6f757.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142470147623:android:7f8735e90e500ef9",
+        "android_client_info": {
+          "package_name": "com.example.ciscoproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "142470147623-10gebouittlt0knlntmegoa3ovfr8f5j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ciscoproject",
+            "certificate_hash": "7621831fb6ef841ce3bd74e2ee653c6b460c71fb"
+          }
+        },
+        {
+          "client_id": "142470147623-kr18ed38lftell0j9ggp2o3s7ef1er8v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIxzG1PzvvNe6ASbT8M60uSVjvCvUccRY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "142470147623-kr18ed38lftell0j9ggp2o3s7ef1er8v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
