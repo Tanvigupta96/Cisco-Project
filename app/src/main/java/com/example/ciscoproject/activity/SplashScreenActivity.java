@@ -1,8 +1,10 @@
-package com.example.ciscoproject;
+package com.example.ciscoproject.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.ciscoproject.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
     Thread splashThread;
@@ -38,7 +40,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     public void loadMainActivity()
     {
-        Intent pintent = new Intent(SplashScreenActivity.this,SchemesActivity.class);
+        Intent pintent = new Intent(SplashScreenActivity.this, SchemesActivity.class);
         pintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         pintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         pintent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
