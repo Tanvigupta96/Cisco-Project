@@ -5,8 +5,19 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
 import java.security.Security;
 import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 
 public class Mail extends Authenticator {
@@ -20,7 +31,7 @@ public class Mail extends Authenticator {
         Security.addProvider(new JsseProvider());
     }
 
-    public Mail(String user,String pass)
+    public Mail(final String user,final String pass)
     {
         this.user=user;
         this.pass=pass;

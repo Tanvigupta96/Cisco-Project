@@ -58,7 +58,7 @@ public class LoginAcitivity extends AppCompatActivity {
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginAcitivity.this, SchemesActivity.class));
+                startActivity(new Intent(LoginAcitivity.this, ResetPasswordActivity.class));
             }
         });
 
@@ -98,7 +98,7 @@ public class LoginAcitivity extends AppCompatActivity {
                                         Toast.makeText(LoginAcitivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(LoginAcitivity.this, SchemesActivity.class);
+                                    Intent intent = new Intent(LoginAcitivity.this, BlogActivity.class);
                                     intent.putExtra("email",email);
                                     startActivity(intent);
 

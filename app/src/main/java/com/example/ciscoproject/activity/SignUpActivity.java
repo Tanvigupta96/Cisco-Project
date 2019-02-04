@@ -55,12 +55,12 @@ public class SignUpActivity extends AppCompatActivity {
         inputAddress = findViewById(R.id.address);
         inputPhone = findViewById(R.id.phone_number);
         inputPassword = findViewById(R.id.password);
-        inputaadhar = findViewById(R.id.aadhar);
+        //inputaadhar = findViewById(R.id.aadhar);
         progressBar = findViewById(R.id.progressBar);
         image = findViewById(R.id.image);
 
         storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReferenceFromUrl("gs://govtapp-d1312.appspot.com/");
+        storageReference = storage.getReferenceFromUrl("gs://ciscoproject-6f757.appspot.com/");
 
         image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +90,7 @@ public class SignUpActivity extends AppCompatActivity {
                 String name = inputName.getText().toString().trim();
                 String address = inputAddress.getText().toString().trim();
                 String phone = inputPhone.getText().toString().trim();
-                String aadhar = inputaadhar.getText().toString().trim();
+                //String aadhar = inputaadhar.getText().toString().trim();
 
 
                 if (TextUtils.isEmpty(email)) {
@@ -110,9 +110,9 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (TextUtils.isEmpty(aadhar)) {
-                    Toast.makeText(getApplicationContext(), "Enter Aadhar Number", Toast.LENGTH_SHORT).show();
-                }
+                //if (TextUtils.isEmpty(aadhar)) {
+                  //  Toast.makeText(getApplicationContext(), "Enter Aadhar Number", Toast.LENGTH_SHORT).show();
+                //}
 
                 if (TextUtils.isEmpty(password)) {
                     Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
@@ -164,7 +164,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 } else {
                                     Toast.makeText(SignUpActivity.this, "Thank You for Registration" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
 
-                                    startActivity(new Intent(SignUpActivity.this, SchemesActivity.class));
+                                    startActivity(new Intent(SignUpActivity.this, BlogActivity.class));
                                     finish();
                                 }
                             }

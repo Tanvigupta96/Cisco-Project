@@ -15,7 +15,7 @@ public class SendQueryActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private EditText editsub,editmsg;
     private Button send;
-    private final String to = "guptatannu.34@gmail.com";
+    private final String to = "koshimagoyal97@gmail.com";
     private final String from="govtapp123@gmail.com";
     private String sub,body;
 
@@ -24,8 +24,9 @@ public class SendQueryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_query);
 
-        toolbar=findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        send=findViewById(R.id.send);
+        //toolbar=findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle("Email Queries");
 
@@ -34,7 +35,7 @@ public class SendQueryActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "142470147623-m0r6290r44m3beaaoqnuu12dqibeup5t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ciscoproject",
+            "certificate_hash": "fbdba25186fa16923123c5b52b4d136438a088ec"
+          }
+        },
+        {
           "client_id": "142470147623-kr18ed38lftell0j9ggp2o3s7ef1er8v.apps.googleusercontent.com",
           "client_type": 3
         }

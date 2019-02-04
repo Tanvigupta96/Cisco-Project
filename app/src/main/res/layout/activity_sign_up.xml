@@ -9,6 +9,8 @@
     android:orientation="vertical">
 
 
+
+
     <ImageView
         android:layout_marginTop="7dp"
         android:layout_width="80dp"
@@ -36,7 +38,6 @@
         android:gravity="center"
         android:orientation="vertical"
         >
-
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -123,7 +124,7 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <!--<android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -139,7 +140,7 @@
                 android:singleLine="true"/>
 
         </android.support.design.widget.TextInputLayout>
-
+-->
 
 
         <Button
@@ -177,6 +178,5 @@
         android:layout_height="30dp"
         android:layout_gravity="center|bottom"
         android:layout_marginBottom="20dp"
-        android:visibility="gone" />
-
+        android:visibility="gone"/>
 </LinearLayout>

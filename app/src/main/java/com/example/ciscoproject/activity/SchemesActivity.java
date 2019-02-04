@@ -116,18 +116,14 @@ public class SchemesActivity extends AppCompatActivity
             Intent intent = new Intent(SchemesActivity.this, LoginAcitivity.class);
             startActivity(intent);
         } else if (id == R.id.discuss) {
-
-
-
-
+            Intent intent = new Intent(SchemesActivity.this,LoginAcitivity.class);
+            startActivity(intent);
         } else if (id == R.id.latest) {
             Intent intent=new Intent();
             intent.setAction(Intent.ACTION_VIEW);
             Uri uri=Uri.parse("https://currentaffairs.gktoday.in/tags/government-schemes");
             intent.setData(uri);
             startActivity(intent);
-
-
 
         } else if (id == R.id.complaintbox){
             Intent intent=new Intent(SchemesActivity.this,SendQueryActivity.class);
