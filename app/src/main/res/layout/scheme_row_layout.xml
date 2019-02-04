@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="205dp"
+    android:layout_height="300dp"
     android:elevation="7dp"
     app:cardCornerRadius="6dp"
     android:id="@+id/cardview"
@@ -16,70 +16,129 @@
         android:id="@+id/linearlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/schemetitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textStyle="bold"
+            tools:text="title"
+            android:textSize="16sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="7dp"
+            android:layout_gravity="center"
+            android:textColor="#161616"
+            />
 
         <ImageView
             android:id="@+id/schemeImage"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
             android:layout_gravity="center"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            android:layout_margin="4dp"/>
+
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center"
-            android:layout_gravity="center">
+            android:layout_marginTop="5dp">
 
-            <TextView
-                android:id="@+id/movietitle"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:textStyle="bold"
-                tools:text="title"
-                android:textSize="16sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="7dp"
-                />
+                android:orientation="horizontal"
+                android:gravity="center">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resident Type:"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorPrimary"
+                    />
 
             <TextView
-                android:textSize="12dp"
+                android:textSize="16dp"
                 android:id="@+id/residenttype"
-                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="this is resident type"
                 android:layout_marginLeft="7dp"
                 />
 
+            </LinearLayout>
 
-            <TextView
-                android:textSize="12dp"
-                android:id="@+id/incometype"
-                android:layout_marginTop="10dp"
-                android:layout_width="200dp"
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="this is Income type"
-                android:layout_marginLeft="7dp"
-                />
+                android:orientation="horizontal"
+                android:gravity="center">
 
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Income Type:"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:textColor="@color/colorPrimary"
+                    />
 
-            <TextView
-                android:layout_width="200dp"
+                <TextView
+                    android:textSize="16dp"
+                    android:id="@+id/incometype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="this is resident type"
+                    android:layout_marginLeft="7dp"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="gender"
-                android:layout_marginTop="2dp"
-                android:textSize="14sp"
-                android:id="@+id/gendertype"
-                />
+                android:orientation="horizontal"
+                android:gravity="center">
 
 
 
 
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Specialially Introduced for Gender:"
+                        android:textStyle="bold"
+                        android:textSize="16dp"
+                        android:textColor="@color/colorPrimary"
+                        />
+
+
+                    <TextView
+                        android:textSize="16dp"
+                        android:id="@+id/gendertype"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="this is gender type"
+                        android:layout_marginLeft="7dp"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+    </LinearLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>
