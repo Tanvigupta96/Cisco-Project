@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import com.example.ciscoproject.ClickListeners.SectorClickListener;
 import com.example.ciscoproject.R;
 import com.example.ciscoproject.activity.ListOfSchemesActivity;
+import com.example.ciscoproject.adapter.ListOfSchemesAdapter;
 import com.example.ciscoproject.adapter.SchemesCatergoryAdapter;
 import com.example.ciscoproject.model.SchemeCategory;
 import com.example.ciscoproject.repository.SchemeRepository;
@@ -58,14 +59,12 @@ public class SchemeCatergoryFragment extends Fragment implements AdapterView.OnI
         spinner.setOnItemSelectedListener(this);
         adapter=new SchemesCatergoryAdapter(getContext(), schemeCategories, new SectorClickListener() {
             @Override
-            public void onsectorclick(String title) {
-                Intent intent=new Intent(getContext(), ListOfSchemesActivity.class);
-                intent.putExtra("Title",title);
-                startActivity(intent);
-
+            public void onsectorclick(SchemeCategory category) {
+                    Intent intent=new Intent(getContext(), ListOfSchemesActivity.class);
+                    intent.putExtra("category",category);
+                    startActivity(intent);
             }
         });
-
 
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         schemescategories.setLayoutManager(linearLayoutManager);

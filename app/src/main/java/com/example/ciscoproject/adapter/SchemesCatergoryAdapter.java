@@ -43,7 +43,7 @@ public class SchemesCatergoryAdapter extends RecyclerView.Adapter<SchemeCategory
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onsectorclick(schemeCategory.getTitle());
+                listener.onsectorclick(schemeCategory);
 
             }
         });
