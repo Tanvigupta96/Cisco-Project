@@ -31,19 +31,18 @@ public class Scheme implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.title);
         dest.writeString(this.description);
-        dest.writeString(String.valueOf(this.url));
+        dest.writeInt(this.url);
         dest.writeInt(this.gender == null ? -1 : this.gender.ordinal());
         dest.writeInt(this.incomeType == null ? -1 : this.incomeType.ordinal());
         dest.writeInt(this.residentType == null ? -1 : this.residentType.ordinal());
     }
 
-    public Scheme() {
-    }
+
 
     protected Scheme(Parcel in) {
         this.title = in.readString();
         this.description = in.readString();
-        this.url = Integer.parseInt(in.readString());
+        this.url = in.readInt();
         int tmpGender = in.readInt();
         this.gender = tmpGender == -1 ? null : Gender.values()[tmpGender];
         int tmpIncomeType = in.readInt();
