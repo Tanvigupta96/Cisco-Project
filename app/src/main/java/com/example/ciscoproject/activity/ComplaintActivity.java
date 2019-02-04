@@ -3,6 +3,8 @@ package com.example.ciscoproject.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.ciscoproject.R;
+
 public class ComplaintActivity extends AppCompatActivity {
 
     @Override

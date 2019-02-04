@@ -44,6 +44,10 @@ public class SchemesActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        fragmentTransaction.replace(R.id.container, schemeCatergoryFragment);
+        fragmentTransaction.commit();
+
     }
 
     @Override
@@ -89,6 +93,7 @@ public class SchemesActivity extends AppCompatActivity
         if (id == R.id.schemes) {
             getSupportActionBar().setTitle("Schemes Categories");
             fragmentTransaction.replace(R.id.container, schemeCatergoryFragment);
+            fragmentTransaction.commit();
 
 
         } else if (id == R.id.login) {

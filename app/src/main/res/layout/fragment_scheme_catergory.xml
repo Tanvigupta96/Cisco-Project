@@ -1,18 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.SchemeCatergoryFragment">
+    tools:context=".fragments.SchemeCatergoryFragment"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
 
+    <TextView
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Sector to filter:"
+        />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textAlignment="center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"/>
+
+
+
   <android.support.v7.widget.RecyclerView
-      android:layout_marginTop="10dp"
+      android:layout_marginTop="15dp"
       android:id="@+id/schemescategories"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content">
+      android:layout_height="wrap_content"
+      android:layout_gravity="center">
 
   </android.support.v7.widget.RecyclerView>
 
-</FrameLayout>
+</LinearLayout>

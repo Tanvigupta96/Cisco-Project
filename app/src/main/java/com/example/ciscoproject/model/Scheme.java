@@ -3,18 +3,17 @@ package com.example.ciscoproject.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import org.xml.sax.Parser;
 
 public class Scheme implements Parcelable {
     private String title;
     private String description;
-    private String url;
+    private int url;
     private Gender gender;
     private IncomeType incomeType;
     private ResidentType residentType;
 
 
-    public Scheme(String title, String description, String url, Gender gender, IncomeType incomeType, ResidentType residentType) {
+    public Scheme(String title, String description, int url, Gender gender, IncomeType incomeType, ResidentType residentType) {
         this.title = title;
         this.description = description;
         this.url = url;
@@ -32,7 +31,7 @@ public class Scheme implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.title);
         dest.writeString(this.description);
-        dest.writeString(this.url);
+        dest.writeString(String.valueOf(this.url));
         dest.writeInt(this.gender == null ? -1 : this.gender.ordinal());
         dest.writeInt(this.incomeType == null ? -1 : this.incomeType.ordinal());
         dest.writeInt(this.residentType == null ? -1 : this.residentType.ordinal());
@@ -44,7 +43,7 @@ public class Scheme implements Parcelable {
     protected Scheme(Parcel in) {
         this.title = in.readString();
         this.description = in.readString();
-        this.url = in.readString();
+        this.url = Integer.parseInt(in.readString());
         int tmpGender = in.readInt();
         this.gender = tmpGender == -1 ? null : Gender.values()[tmpGender];
         int tmpIncomeType = in.readInt();
@@ -64,4 +63,28 @@ public class Scheme implements Parcelable {
             return new Scheme[size];
         }
     };
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getUrl() {
+        return url;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public IncomeType getIncomeType() {
+        return incomeType;
+    }
+
+    public ResidentType getResidentType() {
+        return residentType;
+    }
 }

@@ -50,4 +50,17 @@ public class SchemeCategory implements Parcelable {
     };
 
 
+    public String getTitle() {
+        return title;
+    }
+
+    public int getBackgroundDrawable() {
+        return backgroundDrawable;
+    }
+
+    public ArrayList<Scheme> getSchemes() {
+        return schemes;
+    }
+
+
 }
