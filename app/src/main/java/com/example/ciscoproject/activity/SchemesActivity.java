@@ -130,10 +130,7 @@ public class SchemesActivity extends AppCompatActivity
 
 
         } else if (id == R.id.complaintbox){
-            Intent intent=new Intent();
-            intent.setAction(Intent.ACTION_SENDTO);
-            Uri uri=Uri.parse("mailto:guptatannu.34@gmail.com");
-            intent.setData(uri);
+            Intent intent=new Intent(SchemesActivity.this,SendQueryActivity.class);
             startActivity(intent);
         }
 
