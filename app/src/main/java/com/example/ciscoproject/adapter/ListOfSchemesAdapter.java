@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.ciscoproject.ClickListeners.SchemeClickListener;
 import com.example.ciscoproject.R;
 import com.example.ciscoproject.model.Scheme;
 
@@ -15,11 +16,13 @@ import java.util.ArrayList;
 public class ListOfSchemesAdapter extends RecyclerView.Adapter<ListOfSchemesViewHolder> {
     Context context;
     ArrayList<Scheme> schemes;
+    SchemeClickListener listener;
 
 
-    public  ListOfSchemesAdapter(Context context,ArrayList<Scheme> schemes){
+    public  ListOfSchemesAdapter(Context context,ArrayList<Scheme> schemes,SchemeClickListener listener){
         this.context=context;
         this.schemes=schemes;
+        this.listener=listener;
     }
 
 
@@ -33,12 +36,19 @@ public class ListOfSchemesAdapter extends RecyclerView.Adapter<ListOfSchemesView
 
     @Override
     public void onBindViewHolder(@NonNull ListOfSchemesViewHolder holder, int position) {
-        Scheme scheme=schemes.get(position);
+        final Scheme scheme=schemes.get(position);
         holder.schemeImage.setBackgroundResource(scheme.getUrl());
         holder.title.setText(scheme.getTitle());
         holder.residentType.setText(scheme.getResidentType().name());
         holder.gender.setText(scheme.getGender().name());
         holder.incomeType.setText(scheme.getIncomeType().name());
+        holder.viewdetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onSchemeClick(scheme);
+
+            }
+        });
 
 
 
