@@ -45,6 +45,7 @@ public class SchemesActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        getSupportActionBar().setTitle("Schemes Sectors");
         fragmentTransaction.replace(R.id.container, schemeCatergoryFragment);
         fragmentTransaction.commit();
 
@@ -87,13 +88,15 @@ public class SchemesActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         if (id == R.id.schemes) {
-            getSupportActionBar().setTitle("Schemes Categories");
-            fragmentTransaction.replace(R.id.container, schemeCatergoryFragment);
-            fragmentTransaction.commit();
+            getSupportActionBar().setTitle("Schemes Sectors");
+            transaction.replace(R.id.container, schemeCatergoryFragment);
+
 
 
         } else if (id == R.id.login) {
@@ -115,6 +118,7 @@ public class SchemesActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
 
         }
+        transaction.commit();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
