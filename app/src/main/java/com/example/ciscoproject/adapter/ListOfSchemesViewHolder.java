@@ -18,6 +18,7 @@ public class ListOfSchemesViewHolder extends RecyclerView.ViewHolder {
     TextView incomeType;
     TextView gender;
     CardView cardView;
+    TextView viewdetails;
 
     public ListOfSchemesViewHolder(View itemView) {
         super(itemView);
@@ -26,6 +27,7 @@ public class ListOfSchemesViewHolder extends RecyclerView.ViewHolder {
         residentType=itemView.findViewById(R.id.residenttype);
         incomeType=itemView.findViewById(R.id.incometype);
         gender=itemView.findViewById(R.id.gendertype);
+        viewdetails=itemView.findViewById(R.id.viewdetails);
         cardView=itemView.findViewById(R.id.cardview);
 
     }

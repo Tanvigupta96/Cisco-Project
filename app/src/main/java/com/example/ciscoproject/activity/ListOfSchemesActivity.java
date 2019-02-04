@@ -7,17 +7,16 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import com.example.ciscoproject.ClickListeners.SchemeClickListener;
 import com.example.ciscoproject.R;
 import com.example.ciscoproject.adapter.ListOfSchemesAdapter;
 import com.example.ciscoproject.model.Scheme;
 import com.example.ciscoproject.model.SchemeCategory;
-import com.example.ciscoproject.repository.SchemeRepository;
 
 import java.util.ArrayList;
 
@@ -75,7 +74,7 @@ public class ListOfSchemesActivity extends AppCompatActivity implements AdapterV
         };
 
 
-        String[] incomearray=new String[]{
+        final String[] incomearray=new String[]{
                 "ALL", "ZERO","LOW","HIGH","MEDIUM"
 
         };
@@ -101,7 +100,14 @@ public class ListOfSchemesActivity extends AppCompatActivity implements AdapterV
 
 
 
-        adapter=new ListOfSchemesAdapter(getApplicationContext(),schemes);
+        adapter=new ListOfSchemesAdapter(getApplicationContext(), schemes, new SchemeClickListener() {
+            @Override
+            public void onSchemeClick(Scheme scheme) {
+                Intent intent=new Intent(getApplicationContext(),SchemeDetailActivity.class);
+                intent.putExtra("scheme",scheme);
+                startActivity(intent);
+            }
+        });
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
         listrecycleview.setLayoutManager(linearLayoutManager);
         listrecycleview.setItemAnimator(new DefaultItemAnimator());

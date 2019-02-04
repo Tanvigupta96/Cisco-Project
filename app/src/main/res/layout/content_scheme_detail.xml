@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillViewport="true"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/schemetitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#0C0C0C"
+        tools:text="scheme name"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        />
+
+    <ImageView
+        android:layout_marginTop="15dp"
+        android:id="@+id/schemeimage"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_margin="5dp"/>
+
+    <TextView
+        android:id="@+id/schemedescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="this is the description"
+        android:layout_marginLeft="5dp"
+        android:textColor="#161616"/>
+
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Resident Type:"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:textColor="#161616"
+                />
+
+            <TextView
+                android:textSize="16dp"
+                android:id="@+id/residenttype"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="this is resident type"
+                android:layout_marginLeft="7dp"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Income Type:"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:textColor="#161616"
+                />
+
+            <TextView
+                android:textSize="16dp"
+                android:id="@+id/incometype"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="this is resident type"
+                android:layout_marginLeft="7dp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp">
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Specialially Introduced for Gender:"
+                    android:textStyle="bold"
+                    android:textSize="16dp"
+                    android:textColor="#161616"
+
+                    />
+
+
+                <TextView
+                    android:textSize="16dp"
+                    android:id="@+id/gendertype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="this is gender type"
+                    android:layout_marginLeft="7dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/documentation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/writing"
+                android:background="@null"
+                android:layout_weight="1"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Read"
+                android:gravity="center"
+                android:layout_gravity="center"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+
+            <ImageButton
+                android:id="@+id/share"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_share_red_400_18dp"
+                android:background="@null"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Share"
+                android:gravity="center"
+                android:layout_gravity="center"
+                />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
+</ScrollView>

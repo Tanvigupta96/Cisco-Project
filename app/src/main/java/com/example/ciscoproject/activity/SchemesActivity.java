@@ -1,6 +1,7 @@
 package com.example.ciscoproject.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -107,15 +108,29 @@ public class SchemesActivity extends AppCompatActivity
 
 
 
+
         } else if (id == R.id.latest) {
+            Intent intent=new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            Uri uri=Uri.parse("https://currentaffairs.gktoday.in/tags/government-schemes");
+            intent.setData(uri);
+            startActivity(intent);
+
+
 
         } else if (id == R.id.complaintbox){
-            Intent my = new Intent(this,ComplaintActivity.class);
-            startActivity(my);
+            Intent intent=new Intent();
+            intent.setAction(Intent.ACTION_SENDTO);
+            Uri uri=Uri.parse("mailto:guptatannu.34@gmail.com");
+            intent.setData(uri);
+            startActivity(intent);
+        }
 
-        } else if (id == R.id.nav_share) {
+        else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+        }
+
+        else if (id == R.id.nav_send) {
 
         }
         transaction.commit();
