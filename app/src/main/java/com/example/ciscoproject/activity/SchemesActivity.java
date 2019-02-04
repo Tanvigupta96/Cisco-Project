@@ -1,5 +1,6 @@
 package com.example.ciscoproject.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -78,11 +80,21 @@ public class SchemesActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.notification) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(SchemesActivity.this);
+            builder.setTitle("Get Notifications About any recent scheme!");
+            builder.setIcon(R.drawable.ic_thumb_up_black_18dp);
+            builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent intent = new Intent(SchemesActivity.this, SchemesActivity.class);
+                    startActivity(intent);
 
-        }else{
-            if(id==R.id.signout) {
-            }
-            }
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -108,7 +120,6 @@ public class SchemesActivity extends AppCompatActivity
 
 
 
-
         } else if (id == R.id.latest) {
             Intent intent=new Intent();
             intent.setAction(Intent.ACTION_VIEW);
@@ -128,13 +139,14 @@ public class SchemesActivity extends AppCompatActivity
 
         else if (id == R.id.nav_share) {
 
+
         }
 
         else if (id == R.id.nav_send) {
 
         }
         transaction.commit();
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
