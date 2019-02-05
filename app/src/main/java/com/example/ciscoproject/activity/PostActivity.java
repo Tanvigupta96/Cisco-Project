@@ -27,12 +27,15 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
+
 public class PostActivity extends AppCompatActivity {
 
     private ImageButton imageBtn; private static final int GALLERY_REQUEST_CODE = 2;
     private Uri uri = null; private EditText textTitle; private EditText textDesc;
     private Button postBtn; private StorageReference storage; private FirebaseDatabase database;
     private DatabaseReference databaseRef; private FirebaseAuth mAuth;
+    Uri downloadUrl;
     private DatabaseReference mDatabaseUsers; private FirebaseUser mCurrentUser;
 
     @Override
@@ -65,15 +68,22 @@ public class PostActivity extends AppCompatActivity {
                 final String PostDesc = textDesc.getText().toString().trim();
                 // do a check for empty fields
                 if (!TextUtils.isEmpty(PostDesc) && !TextUtils.isEmpty(PostTitle)){
-                    StorageReference filepath = storage.child("post_images").child(uri.getLastPathSegment());
+                    final StorageReference filepath = storage.child("post_images").child(uri.getLastPathSegment());
                     filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            @SuppressWarnings("VisibleForTests")
-                            //getting the post image download url
-                            final Uri downloadUrl = taskSnapshot.getUploadSessionUri();
+                            filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                   
+                                    //getting the post image download url
+                                    downloadUrl = uri;
+
+                                }
+                            });
                             Toast.makeText(getApplicationContext(), "Succesfully Uploaded", Toast.LENGTH_SHORT).show();
                             final DatabaseReference newPost = databaseRef.push();//adding post contents to database reference
+
                             mDatabaseUsers.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
