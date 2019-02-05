@@ -41,23 +41,23 @@ public class PostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
-        postBtn = (Button) findViewById(R.id.postBtn);
-        textDesc = (EditText) findViewById(R.id.textDesc);
-        textTitle = (EditText) findViewById(R.id.textTitle);
+        postBtn = (Button)findViewById(R.id.postBtn);
+        textDesc = (EditText)findViewById(R.id.textDesc);
+        textTitle = (EditText)findViewById(R.id.textTitle);
         storage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://ciscoproject-6f757.appspot.com/");
         databaseRef = database.getInstance().getReference().child("image");
         mAuth = FirebaseAuth.getInstance();
         mCurrentUser = mAuth.getCurrentUser();
         mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid());
-        imageBtn = (ImageButton) findViewById(R.id.imageBtn);
+        imageBtn = (ImageButton)findViewById(R.id.imageBtn);
         //picking image from gallery
-        /*imageBtn.setOnClickListener(new View.OnClickListener() {
+        imageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent galleryIntent = new Intent(Intent.ACTION_GET_CONTENT);
                 galleryIntent.setType("image/*");
                 startActivityForResult(galleryIntent, GALLERY_REQUEST_CODE);
-            } });*/
+            } });
         // posting to Firebase
         postBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,52 +66,39 @@ public class PostActivity extends AppCompatActivity {
                 final String PostTitle = textTitle.getText().toString().trim();
                 final String PostDesc = textDesc.getText().toString().trim();
                 // do a check for empty fields
-                if (!TextUtils.isEmpty(PostDesc) && !TextUtils.isEmpty(PostTitle)) {
-                    //StorageReference filepath = storage.child("post_images").child(uri.getLastPathSegment());
-                    /*filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                if (!TextUtils.isEmpty(PostDesc) && !TextUtils.isEmpty(PostTitle)){
+                    StorageReference filepath = storage.child("post_images").child(uri.getLastPathSegment());
+                    filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             @SuppressWarnings("VisibleForTests")
                             //getting the post image download url
                             final Uri downloadUrl = taskSnapshot.getUploadSessionUri();
                             Toast.makeText(getApplicationContext(), "Succesfully Uploaded", Toast.LENGTH_SHORT).show();
-                            */
-                    //final DatabaseReference newPost = databaseRef.push();//adding post contents to database reference
-                    mDatabaseUsers.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            databaseRef.child("title").setValue(PostTitle);
-                            databaseRef.child("desc").setValue(PostDesc);
-                            //newPost.child("imageUrl").setValue(downloadUrl.toString());
-                            databaseRef.child("uid").setValue(mCurrentUser.getUid());
-                            databaseRef.child("username").setValue(dataSnapshot.child("name").getValue())
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                databaseRef.push();
-                                                Intent intent = new Intent(PostActivity.this, BlogActivity.class);
-                                                startActivity(intent);
-                                                Toast.makeText(getApplicationContext(), "Succesfully Uploaded", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    });
-                        }
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                        }
-                    });
-                }
-            }
-        });
-   /* @Override
+                            final DatabaseReference newPost = databaseRef.push();//adding post contents to database reference
+                            mDatabaseUsers.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    newPost.child("title").setValue(PostTitle);
+                                    newPost.child("desc").setValue(PostDesc);
+                                    newPost.child("imageUrl").setValue(downloadUrl.toString());
+                                    newPost.child("uid").setValue(mCurrentUser.getUid());
+                                    newPost.child("username").setValue(dataSnapshot.child("name").getValue())
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()){
+                                                        Intent intent = new Intent(PostActivity.this, BlogActivity.class);
+                                                        startActivity(intent);
+                                                    }}});}
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                } }); } }); }}}); }
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //image from gallery result
         if (requestCode == GALLERY_REQUEST_CODE && resultCode == RESULT_OK){
             uri = data.getData();
             imageBtn.setImageURI(uri);
-        }}*/
-
-    }}
+        }}}
