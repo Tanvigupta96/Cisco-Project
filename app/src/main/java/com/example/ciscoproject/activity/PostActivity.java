@@ -75,7 +75,7 @@ public class PostActivity extends AppCompatActivity {
                             filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                   
+
                                     //getting the post image download url
                                     downloadUrl = uri;
 

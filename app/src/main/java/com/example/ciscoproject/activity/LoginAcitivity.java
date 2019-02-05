@@ -29,7 +29,7 @@ public class LoginAcitivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginAcitivity.this, SchemesActivity.class));
+            startActivity(new Intent(LoginAcitivity.this, BlogActivity.class));
             finish();
         }
 
