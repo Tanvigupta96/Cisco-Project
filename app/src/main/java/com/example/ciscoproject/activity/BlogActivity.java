@@ -39,8 +39,8 @@ public class BlogActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog);
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         //initialize recyclerview and FIrebase objects
         query=FirebaseDatabase.getInstance().getReference();
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview);

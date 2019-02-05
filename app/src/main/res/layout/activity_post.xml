@@ -23,7 +23,7 @@
             android:layout_marginTop="20dp"
         android:id="@+id/textTitle"
         android:padding="10dp"
-        android:textColor="#fff"
+        android:textColor="#0F0F0F"
         android:textStyle="bold"
         android:hint="Post Title"
         android:layout_marginRight="5dp"
@@ -35,7 +35,7 @@
         android:padding="10dp"
         android:layout_marginTop="20dp"
         android:hint="Post Description"
-        android:textColor="#fff"
+        android:textColor="#0F0F0F"
         android:id="@+id/textDesc"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
@@ -51,7 +51,8 @@
         android:layout_marginLeft="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Post"/>
+        android:text="Post"
+            android:backgroundTint="@color/colorPrimary"/>
 
     </LinearLayout>
 
