@@ -79,15 +79,16 @@ public class PostActivity extends AppCompatActivity {
                             mDatabaseUsers.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    newPost.child("title").setValue(PostTitle);
-                                    newPost.child("desc").setValue(PostDesc);
-                                    newPost.child("imageUrl").setValue(downloadUrl.toString());
-                                    newPost.child("uid").setValue(mCurrentUser.getUid());
-                                    newPost.child("username").setValue(dataSnapshot.child("name").getValue())
+                                    databaseRef.child("title").setValue(PostTitle);
+                                    databaseRef.child("desc").setValue(PostDesc);
+                                    databaseRef.child("imageUrl").setValue(downloadUrl.toString());
+                                    databaseRef.child("uid").setValue(mCurrentUser.getUid());
+                                    databaseRef.child("username").setValue(dataSnapshot.child("name").getValue())
                                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()){
+                                                        databaseRef.push();
                                                         Intent intent = new Intent(PostActivity.this, BlogActivity.class);
                                                         startActivity(intent);
                                                     }}});}
