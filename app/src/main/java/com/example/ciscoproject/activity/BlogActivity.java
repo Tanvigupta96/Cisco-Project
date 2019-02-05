@@ -36,7 +36,6 @@ public class BlogActivity extends AppCompatActivity {
     private FirebaseDatabase database;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private Query query;
     FirebaseRecyclerAdapter FBRA;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +47,6 @@ public class BlogActivity extends AppCompatActivity {
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-        //mDatabase = FirebaseDatabase.getInstance().getReference().child("image");
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -66,15 +64,21 @@ public class BlogActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
-        query=FirebaseDatabase.getInstance().getReference("posts");
+        Query query=FirebaseDatabase.getInstance().getReference().child("posts");
         FirebaseRecyclerOptions<Blog> options=new FirebaseRecyclerOptions.Builder<Blog>().setQuery(query,Blog.class).build();
         FBRA = new FirebaseRecyclerAdapter<Blog, BlogViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(BlogViewHolder viewHolder, int position,Blog model) {
+            protected void onBindViewHolder(BlogViewHolder viewHolder,final int position,Blog model) {
 
                 viewHolder.setTitle(model.getTitle());
                 viewHolder.setDesc(model.getDesc());
                 viewHolder.setUserName(model.getUsername());
+                viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(BlogActivity.this,String.valueOf(position),Toast.LENGTH_LONG).show();
+                    }
+                });
 
             }
             @Override
@@ -85,7 +89,6 @@ public class BlogActivity extends AppCompatActivity {
             }
         };
         recyclerView.setAdapter(FBRA);
-        FBRA.notifyDataSetChanged();
     }
     @Override
     protected void onStop()
@@ -94,23 +97,7 @@ public class BlogActivity extends AppCompatActivity {
         FBRA.stopListening();
     }
 
-    public static class BlogViewHolder extends RecyclerView.ViewHolder{
-        View mView;
 
-        public BlogViewHolder(View itemView) {
-            super(itemView);
-            mView = itemView;
-
-        } public void setTitle(String title){
-            TextView post_title = mView.findViewById(R.id.post_title_txtview);
-            post_title.setText(title);
-        } public void setDesc(String desc){
-            TextView post_desc = mView.findViewById(R.id.post_desc_txtview);
-            post_desc.setText(desc);
-        } public void setUserName(String userName){
-            TextView postUserName = mView.findViewById(R.id.post_user);
-            postUserName.setText(userName);
-        } }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

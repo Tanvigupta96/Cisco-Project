@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Exclude;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -28,6 +29,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PostActivity extends AppCompatActivity {
 
@@ -41,16 +44,21 @@ public class PostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
-        postBtn = (Button)findViewById(R.id.postBtn);
-        textDesc = (EditText)findViewById(R.id.textDesc);
-        textTitle = (EditText)findViewById(R.id.textTitle);
-        storage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://ciscoproject-6f757.appspot.com/");
-        databaseRef = database.getInstance().getReference().child("posts");
-        mAuth = FirebaseAuth.getInstance();
-        mCurrentUser = mAuth.getCurrentUser();
-        mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid());
+        postBtn = (Button) findViewById(R.id.postBtn);
+        textDesc = (EditText) findViewById(R.id.textDesc);
+        textTitle = (EditText) findViewById(R.id.textTitle);
+        databaseRef = FirebaseDatabase.getInstance().getReference().child("posts");
+
+    }
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("title", textTitle);
+        result.put("body", textDesc);
+        return result;
+    }
         // posting to Firebase
-        postBtn.setOnClickListener(new View.OnClickListener() {
+        /*postBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(PostActivity.this, "POSTING…", Toast.LENGTH_LONG).show();
@@ -71,15 +79,17 @@ public class PostActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()){
-                                                        databaseRef.push();
+                                                        DatabaseReference ref = databaseRef.child("posts");
+                                                        ref.push();
+                                                        Toast.makeText(getApplicationContext(), "Succesfully Uploaded", Toast.LENGTH_SHORT).show();
                                                         Intent intent = new Intent(PostActivity.this, BlogActivity.class);
                                                         intent.putExtra("title",PostTitle );
                                                         intent.putExtra("description",PostDesc);
                                                         startActivity(intent);
-                                                        Toast.makeText(getApplicationContext(), "Succesfully Uploaded", Toast.LENGTH_SHORT).show();
+
 
                                                     }}});}
                                 @Override
                                 public void onCancelled(DatabaseError databaseError) {
-                                } }); } }});  }
+                                } }); } }});  }*/
     }
