@@ -25,8 +25,8 @@ public class SendQueryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_send_query);
 
         send=findViewById(R.id.send);
-        //toolbar=findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         getSupportActionBar().setTitle("Email Queries");
 

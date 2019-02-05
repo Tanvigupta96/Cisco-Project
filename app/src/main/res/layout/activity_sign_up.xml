@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillViewport="true"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -124,7 +131,7 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <!--<android.support.design.widget.TextInputLayout
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -140,7 +147,7 @@
                 android:singleLine="true"/>
 
         </android.support.design.widget.TextInputLayout>
--->
+
 
 
         <Button
@@ -180,3 +187,4 @@
         android:layout_marginBottom="20dp"
         android:visibility="gone"/>
 </LinearLayout>
+</ScrollView>
