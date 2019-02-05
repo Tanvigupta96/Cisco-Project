@@ -43,8 +43,8 @@ public class PostActivity extends AppCompatActivity {
         postBtn = (Button)findViewById(R.id.postBtn);
         textDesc = (EditText)findViewById(R.id.textDesc);
         textTitle = (EditText)findViewById(R.id.textTitle);
-        storage = FirebaseStorage.getInstance().getReference();
-        databaseRef = database.getInstance().getReferenceFromUrl("gs://ciscoproject-6f757.appspot.com/").child("image");
+        storage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://ciscoproject-6f757.appspot.com/");
+        databaseRef = database.getInstance().getReference().child("image");
         mAuth = FirebaseAuth.getInstance();
         mCurrentUser = mAuth.getCurrentUser();
         mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid());
