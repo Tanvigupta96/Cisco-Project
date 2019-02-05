@@ -36,7 +36,7 @@ public class PostActivity extends AppCompatActivity {
 
     private ImageButton imageBtn; private static final int GALLERY_REQUEST_CODE = 2;
     private Uri uri = null; private EditText textTitle; private EditText textDesc;
-    private Button postBtn; private StorageReference storage; private FirebaseDatabase database;
+    private Button postBtn;
     private DatabaseReference databaseRef; private FirebaseAuth mAuth;
     private DatabaseReference mDatabaseUsers; private FirebaseUser mCurrentUser;
 
@@ -48,17 +48,10 @@ public class PostActivity extends AppCompatActivity {
         textDesc = (EditText) findViewById(R.id.textDesc);
         textTitle = (EditText) findViewById(R.id.textTitle);
         databaseRef = FirebaseDatabase.getInstance().getReference().child("posts");
-
-    }
-    @Exclude
-    public Map<String, Object> toMap() {
-        HashMap<String, Object> result = new HashMap<>();
-        result.put("title", textTitle);
-        result.put("body", textDesc);
-        return result;
-    }
+        mCurrentUser=FirebaseAuth.getInstance().getCurrentUser();
+        mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid());
         // posting to Firebase
-        /*postBtn.setOnClickListener(new View.OnClickListener() {
+        postBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(PostActivity.this, "POSTING…", Toast.LENGTH_LONG).show();
@@ -66,30 +59,23 @@ public class PostActivity extends AppCompatActivity {
                 final String PostDesc = textDesc.getText().toString().trim();
                 // do a check for empty fields
                 if (!TextUtils.isEmpty(PostDesc) && !TextUtils.isEmpty(PostTitle)){
-// final DatabaseReference newPost = databaseRef.push();//adding post contents to database reference
+                final DatabaseReference newPost = databaseRef.push();//adding post contents to database reference
                             mDatabaseUsers.addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(DataSnapshot dataSnapshot) {
-                                    databaseRef.child("title").setValue(PostTitle);
-                                    databaseRef.child("desc").setValue(PostDesc);
+                                    newPost.child("title").setValue(PostTitle);
+                                    newPost.child("desc").setValue(PostDesc);
 
-                                    databaseRef.child("uid").setValue(mCurrentUser.getUid());
-                                    databaseRef.child("username").setValue(dataSnapshot.child("name").getValue())
-                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    newPost.child("uid").setValue(mCurrentUser.getUid()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()){
-                                                        DatabaseReference ref = databaseRef.child("posts");
-                                                        ref.push();
-                                                        Toast.makeText(getApplicationContext(), "Succesfully Uploaded", Toast.LENGTH_SHORT).show();
                                                         Intent intent = new Intent(PostActivity.this, BlogActivity.class);
-                                                        intent.putExtra("title",PostTitle );
-                                                        intent.putExtra("description",PostDesc);
                                                         startActivity(intent);
 
 
                                                     }}});}
                                 @Override
                                 public void onCancelled(DatabaseError databaseError) {
-                                } }); } }});  }*/
-    }
+                                } }); } }});
+    }}

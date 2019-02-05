@@ -2,13 +2,13 @@ package com.example.ciscoproject.activity;
 
 public class Blog {
     // define four String variables
-    private String title, desc, username;
+    private String title, desc, uid;
     // generate their respective constructors
-    public Blog(String title, String desc, String username) {
+    public Blog(String title, String desc, String uid) {
         this.title = title;
         this.desc = desc;
         //this.imageUrl=imageUrl;
-        this.username = username;
+        this.uid = uid;
     }
     // create an empty constructor
     public Blog() {
@@ -16,8 +16,8 @@ public class Blog {
     /*public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }*/
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUid(String uid) {
+        this.uid = uid;
     }
     public void setTitle(String title) {
         this.title = title;
@@ -34,8 +34,8 @@ public class Blog {
     public String getDesc() {
         return desc;
     }
-    public String getUsername() {
-        return username;
+    public String getUid() {
+        return uid;
     }
 }
 
