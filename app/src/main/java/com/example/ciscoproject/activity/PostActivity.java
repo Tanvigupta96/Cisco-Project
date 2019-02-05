@@ -65,7 +65,7 @@ public class PostActivity extends AppCompatActivity {
                 Toast.makeText(PostActivity.this, "POSTING…", Toast.LENGTH_LONG).show();
                 final String PostTitle = textTitle.getText().toString().trim();
                 final String PostDesc = textDesc.getText().toString().trim();
-                // do a check for empty fields
+                // do a check for empty fieldsgi p
                 if (!TextUtils.isEmpty(PostDesc) && !TextUtils.isEmpty(PostTitle)) {
                     //StorageReference filepath = storage.child("post_images").child(uri.getLastPathSegment());
                     /*filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
