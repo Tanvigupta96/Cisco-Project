@@ -35,6 +35,16 @@ public class SendQueryActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                finish();
+            }
+        });
+
+
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
