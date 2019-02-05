@@ -45,7 +45,7 @@ public class PostActivity extends AppCompatActivity {
         textDesc = (EditText)findViewById(R.id.textDesc);
         textTitle = (EditText)findViewById(R.id.textTitle);
         storage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://ciscoproject-6f757.appspot.com/");
-        databaseRef = database.getInstance().getReference().child("image");
+        databaseRef = database.getInstance().getReference().child("posts");
         mAuth = FirebaseAuth.getInstance();
         mCurrentUser = mAuth.getCurrentUser();
         mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users").child(mCurrentUser.getUid());
@@ -72,6 +72,8 @@ public class PostActivity extends AppCompatActivity {
                                                     if (task.isSuccessful()){
                                                         databaseRef.push();
                                                         Intent intent = new Intent(PostActivity.this, BlogActivity.class);
+                                                        intent.putExtra("title",PostTitle );
+                                                        intent.putExtra("description",PostDesc);
                                                         startActivity(intent);
                                                         Toast.makeText(getApplicationContext(), "Succesfully Uploaded", Toast.LENGTH_SHORT).show();
 

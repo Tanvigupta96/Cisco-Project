@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center">
-        
+
         <EditText
             android:layout_marginTop="20dp"
         android:id="@+id/textTitle"

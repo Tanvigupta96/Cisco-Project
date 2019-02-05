@@ -98,7 +98,7 @@ public class LoginAcitivity extends AppCompatActivity {
                                         Toast.makeText(LoginAcitivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(LoginAcitivity.this, BlogActivity.class);
+                                    Intent intent = new Intent(LoginAcitivity.this, PostActivity.class);
                                     intent.putExtra("email",email);
                                     startActivity(intent);
 
