@@ -64,6 +64,7 @@ public class PostActivity extends AppCompatActivity {
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     databaseRef.child("title").setValue(PostTitle);
                                     databaseRef.child("desc").setValue(PostDesc);
+
                                     databaseRef.child("uid").setValue(mCurrentUser.getUid());
                                     databaseRef.child("username").setValue(dataSnapshot.child("name").getValue())
                                             .addOnCompleteListener(new OnCompleteListener<Void>() {
