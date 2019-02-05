@@ -34,7 +34,6 @@ public class PostActivity extends AppCompatActivity {
     private Button postBtn; private StorageReference storage; private FirebaseDatabase database;
     private DatabaseReference databaseRef; private FirebaseAuth mAuth;
     private DatabaseReference mDatabaseUsers; private FirebaseUser mCurrentUser;
-    private Uri filePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +42,7 @@ public class PostActivity extends AppCompatActivity {
         postBtn = (Button)findViewById(R.id.postBtn);
         textDesc = (EditText)findViewById(R.id.textDesc);
         textTitle = (EditText)findViewById(R.id.textTitle);
-        storage = FirebaseStorage.getInstance().getReferenceFromUrl("gs://ciscoproject-6f757.appspot.com/");
+        storage = FirebaseStorage.getInstance().getReference();
         databaseRef = database.getInstance().getReference().child("image");
         mAuth = FirebaseAuth.getInstance();
         mCurrentUser = mAuth.getCurrentUser();
@@ -66,13 +65,11 @@ public class PostActivity extends AppCompatActivity {
                 final String PostDesc = textDesc.getText().toString().trim();
                 // do a check for empty fields
                 if (!TextUtils.isEmpty(PostDesc) && !TextUtils.isEmpty(PostTitle)){
-                    StorageReference childRef = storage.child("post_images");
-                    UploadTask uploadTask = childRef.putFile(filePath);
-
-                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    StorageReference filepath = storage.child("post_images").child(uri.getLastPathSegment());
+                    filepath.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
+                            @SuppressWarnings("VisibleForTests")
                             //getting the post image download url
                             final Uri downloadUrl = taskSnapshot.getUploadSessionUri();
                             Toast.makeText(getApplicationContext(), "Succesfully Uploaded", Toast.LENGTH_SHORT).show();
