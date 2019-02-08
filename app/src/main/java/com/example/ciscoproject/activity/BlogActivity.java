@@ -1,7 +1,5 @@
 package com.example.ciscoproject.activity;
 
-import android.app.DownloadManager;
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -9,32 +7,25 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ciscoproject.R;
+import com.example.ciscoproject.model.Blog;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
-
-import javax.activation.CommandObject;
 
 public class BlogActivity extends AppCompatActivity {
 
@@ -74,7 +65,16 @@ public class BlogActivity extends AppCompatActivity {
     private void fetch()
     {
         Query query=mDatabase.orderByKey();
-        FirebaseRecyclerOptions<Blog> options=new FirebaseRecyclerOptions.Builder<Blog>().setQuery(query,Blog.class).build();
+        FirebaseRecyclerOptions<Blog> options=new FirebaseRecyclerOptions.Builder<Blog>().setQuery(query, new SnapshotParser<Blog>() {
+            @NonNull
+            @Override
+            public Blog parseSnapshot(@NonNull DataSnapshot snapshot) {
+                String title = snapshot.child("title").getValue(String.class);
+                String desc = snapshot.child("desc").getValue(String.class);
+                String uid = snapshot.child("uid").getValue(String.class);
+                return new Blog(title,desc,uid);
+            }
+        }).build();
         FBRA = new FirebaseRecyclerAdapter<Blog, BlogViewHolder>(options) {
             @Override
             protected void onBindViewHolder(BlogViewHolder viewHolder,int position,Blog model) {

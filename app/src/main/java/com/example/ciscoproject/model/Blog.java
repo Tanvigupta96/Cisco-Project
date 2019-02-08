@@ -1,4 +1,4 @@
-package com.example.ciscoproject.activity;
+package com.example.ciscoproject.model;
 
 public class Blog {
     // define four String variables
