@@ -54,7 +54,7 @@ public class PostActivity extends AppCompatActivity {
         postBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(PostActivity.this, "POSTING…", Toast.LENGTH_LONG).show();
+                Toast.makeText(PostActivity.this, "POSTING…", Toast.LENGTH_SHORT).show();
                 final String PostTitle = textTitle.getText().toString().trim();
                 final String PostDesc = textDesc.getText().toString().trim();
                 // do a check for empty fields
@@ -65,15 +65,15 @@ public class PostActivity extends AppCompatActivity {
                                 public void onDataChange(DataSnapshot dataSnapshot) {
                                     newPost.child("title").setValue(PostTitle);
                                     newPost.child("desc").setValue(PostDesc);
-
+                                    newPost.child("like").setValue("0");
+                                    newPost.child("comment").setValue("0");
                                     newPost.child("uid").setValue(mCurrentUser.getUid()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()){
+                                                        Toast.makeText(PostActivity.this, "POST SUCCESSFULL", Toast.LENGTH_SHORT).show();
                                                         Intent intent = new Intent(PostActivity.this, BlogActivity.class);
                                                         startActivity(intent);
-
-
                                                     }}});}
                                 @Override
                                 public void onCancelled(DatabaseError databaseError) {

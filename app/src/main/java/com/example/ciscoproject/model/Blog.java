@@ -1,21 +1,21 @@
 package com.example.ciscoproject.model;
 
+import java.io.Serializable;
+
 public class Blog {
     // define four String variables
-    private String title, desc, uid;
+    private String title, desc, uid,likeno,commentno;
     // generate their respective constructors
-    public Blog(String title, String desc, String uid) {
+    public Blog(String title, String desc, String uid,String likeno,String commentno) {
         this.title = title;
         this.desc = desc;
-        //this.imageUrl=imageUrl;
         this.uid = uid;
+        this.commentno=commentno;
+        this.likeno=likeno;
     }
     // create an empty constructor
     public Blog() {
     }
-    /*public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }*/
     public void setUid(String uid) {
         this.uid = uid;
     }
@@ -25,9 +25,6 @@ public class Blog {
     public void setDesc(String desc) {
         this.desc = desc;
     }
-    /*public String getImageUrl() {
-        return imageUrl;
-    }*/
     public String getTitle() {
         return title;
     }
@@ -36,6 +33,22 @@ public class Blog {
     }
     public String getUid() {
         return uid;
+    }
+
+    public String getLikeno() {
+        return likeno;
+    }
+
+    public void setLikeno(String likeno) {
+        this.likeno = likeno;
+    }
+
+    public String getCommentno() {
+        return commentno;
+    }
+
+    public void setCommentno(String commentno) {
+        this.commentno = commentno;
     }
 }
 
